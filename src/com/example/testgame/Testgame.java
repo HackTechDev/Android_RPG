@@ -36,6 +36,7 @@ import org.andengine.input.touch.TouchEvent;
 import org.andengine.input.touch.controller.MultiTouch;
 import org.andengine.opengl.font.Font;
 import org.andengine.opengl.font.FontFactory;
+import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
@@ -45,7 +46,7 @@ import org.andengine.ui.activity.SimpleBaseGameActivity;
 import org.andengine.util.Constants;
 import org.andengine.util.debug.Debug;
 
-import android.graphics.Typeface;
+import android.graphics.Color;
 import android.opengl.GLES20;
 import android.widget.Toast;
 
@@ -166,11 +167,12 @@ public class Testgame extends SimpleBaseGameActivity {
 						"face_circle_tiled_b.png", 0, 0, 2, 1);
 		this.bButtonTextureAtlas.load();
 
-		this.mFont = FontFactory.create(this.getFontManager(),
-				this.getTextureManager(), 256, 256, TextureOptions.BILINEAR,
-				Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), 40);
+		final ITexture droidFontTexture = new BitmapTextureAtlas(this.getTextureManager(), 256, 256, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+		FontFactory.setAssetBasePath("font/");
+		this.mFont = FontFactory.createFromAsset(this.getFontManager(), droidFontTexture, this.getAssets(), "DroidSans.ttf", 24, true, Color.BLACK );
 		this.mFont.load();
-
+	
+		
 		this.mOnScreenControlTexture = new BitmapTextureAtlas(
 				this.getTextureManager(), 256, 128, TextureOptions.BILINEAR);
 		this.mOnScreenControlBaseTextureRegion = BitmapTextureAtlasTextureRegionFactory
@@ -436,7 +438,7 @@ public class Testgame extends SimpleBaseGameActivity {
 
 				if (tmxTile != null) {
 
-					fpsTextY.setText("x : " + (int) player.getX() + " | y : "
+					fpsTextY.setText("แม่น้ำนั้น x : " + (int) player.getX() + " | y : "
 							+ (int) player.getY());
 
 					for (Upc upc : UPChandle) {
