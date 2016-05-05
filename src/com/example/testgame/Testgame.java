@@ -145,6 +145,11 @@ public class Testgame extends SimpleBaseGameActivity {
 					Toast.LENGTH_LONG).show();
 		}
 
+		/*
+		engineOptions.getAudioOptions().setNeedsMusic(true);
+		engineOptions.getAudioOptions().setNeedsSound(true);
+		*/
+		
 		return engineOptions;
 	}
 
@@ -158,7 +163,18 @@ public class Testgame extends SimpleBaseGameActivity {
 				.createTiledFromAsset(this.mBitmapTextureAtlas, this,
 						"player1.png", 0, 0, 3, 4);
 		this.mBitmapTextureAtlas.load();
+		
+		/*
+		try {
+			this.soundTrack = MusicFactory.createMusicFromAsset(
+					this.mEngine.getMusicManager(), this, "track.ogg");
+			this.soundTrack.setLooping(true);
 
+		} catch (final IOException e) {
+			Log.e("SOUND ERROR", e.getMessage());
+		}
+		*/
+		
 		this.aButtonTextureAtlas = new BitmapTextureAtlas(
 				this.getTextureManager(), 128, 64, TextureOptions.DEFAULT);
 		this.aButtonTextureRegion = BitmapTextureAtlasTextureRegionFactory
@@ -188,23 +204,16 @@ public class Testgame extends SimpleBaseGameActivity {
 				.createFromAsset(this.mOnScreenControlTexture, this,
 						"onscreen_control_knob.png", 128, 0);
 		this.mOnScreenControlTexture.load();
-
-		/*
-		MusicFactory.setAssetBasePath("mfx/");		
-		try {
-			this.soundTrack = MusicFactory.createMusicFromAsset(
-					this.mEngine.getMusicManager(), this, "track.ogg");
-			this.soundTrack.setLooping(true);
-
-		} catch (final IOException e) {
-			Log.e("SOUND ERROR", e.getMessage());
-		}*/		
+	
 	}
 
 	@Override
 	public Scene onCreateScene() {
 
 		this.mEngine.registerUpdateHandler(new FPSLogger());
+		
+		//Testgame.this.soundTrack.play();
+		
 		bt1txt = new Text(0, 20, this.mFont, "A button : none",
 				"A button : xxxxxxxxxxxxxxx ".length(),
 				this.getVertexBufferObjectManager());
