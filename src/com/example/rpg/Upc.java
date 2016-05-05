@@ -1,4 +1,4 @@
-package com.example.testgame;
+package com.example.rpg;
 
 import java.util.ArrayList;
 
