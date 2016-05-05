@@ -1,7 +1,10 @@
 package com.example.testgame;
 
 import java.util.ArrayList;
+import java.io.IOException;
 
+import org.andengine.audio.music.Music;
+import org.andengine.audio.music.MusicFactory;
 import org.andengine.engine.camera.BoundCamera;
 import org.andengine.engine.camera.hud.HUD;
 import org.andengine.engine.camera.hud.controls.BaseOnScreenControl;
@@ -49,6 +52,7 @@ import org.andengine.util.debug.Debug;
 import android.graphics.Color;
 import android.opengl.GLES20;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -106,6 +110,8 @@ public class Testgame extends SimpleBaseGameActivity {
 
 	private float centerX, centerY;
 
+	private Music soundTrack;
+	
 	// ===========================================================
 	// Constructors
 	// ===========================================================
@@ -183,6 +189,16 @@ public class Testgame extends SimpleBaseGameActivity {
 						"onscreen_control_knob.png", 128, 0);
 		this.mOnScreenControlTexture.load();
 
+		/*
+		MusicFactory.setAssetBasePath("mfx/");		
+		try {
+			this.soundTrack = MusicFactory.createMusicFromAsset(
+					this.mEngine.getMusicManager(), this, "track.ogg");
+			this.soundTrack.setLooping(true);
+
+		} catch (final IOException e) {
+			Log.e("SOUND ERROR", e.getMessage());
+		}*/		
 	}
 
 	@Override
@@ -438,7 +454,7 @@ public class Testgame extends SimpleBaseGameActivity {
 
 				if (tmxTile != null) {
 
-					fpsTextY.setText("����ӹ�� x : " + (int) player.getX() + " | y : "
+					fpsTextY.setText("Position x : " + (int) player.getX() + " | y : "
 							+ (int) player.getY());
 
 					for (Upc upc : UPChandle) {
