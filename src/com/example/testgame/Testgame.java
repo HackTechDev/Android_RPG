@@ -150,7 +150,7 @@ public class Testgame extends SimpleBaseGameActivity {
 				this.getTextureManager(), 96, 192, TextureOptions.DEFAULT);
 		this.mPlayerTextureRegion = BitmapTextureAtlasTextureRegionFactory
 				.createTiledFromAsset(this.mBitmapTextureAtlas, this,
-						"maidchar01.png", 0, 0, 3, 4);
+						"player1.png", 0, 0, 3, 4);
 		this.mBitmapTextureAtlas.load();
 
 		this.aButtonTextureAtlas = new BitmapTextureAtlas(
@@ -438,7 +438,7 @@ public class Testgame extends SimpleBaseGameActivity {
 
 				if (tmxTile != null) {
 
-					fpsTextY.setText("áÁè¹éÓ¹Ñé¹ x : " + (int) player.getX() + " | y : "
+					fpsTextY.setText("ï¿½ï¿½ï¿½ï¿½Ó¹ï¿½ï¿½ x : " + (int) player.getX() + " | y : "
 							+ (int) player.getY());
 
 					for (Upc upc : UPChandle) {
